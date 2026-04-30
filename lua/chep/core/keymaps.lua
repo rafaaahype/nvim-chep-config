@@ -41,7 +41,10 @@ vim.keymap.set("n","<F5>",function()
   elseif ft == "odin" then
   	print("programa em odin foi compilado moral")
 	cmd = "odin run *.odin -file"
-  end
+  elseif ft == "lua" then
+	print("programa em lua foi compilado moral")
+	cmd = "lua *.lua" 
+end
 
   if cmd ~= "" then
     vim.cmd("terminal " .. cmd)

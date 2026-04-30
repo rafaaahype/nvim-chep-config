@@ -7,7 +7,7 @@ return {
     if not status then return end
 
     ts.setup({
-      ensure_installed = { "javascript", "typescript", "html", "css", "c", "lua", "ols" },
+      ensure_installed = { "javascript", "typescript", "html", "css", "c", "lua_ls", "ols" },
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
