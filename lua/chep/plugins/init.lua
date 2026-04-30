@@ -24,4 +24,6 @@ require("lazy").setup({
   require("chep.plugins.autopairs"),
   require("chep.plugins.autotag"),
   require("chep.plugins.liveserver"),
+  require("chep.plugins.autosave"),
+  require("chep.plugins.notify")
 })
