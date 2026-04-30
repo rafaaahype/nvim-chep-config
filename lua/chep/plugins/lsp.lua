@@ -11,14 +11,14 @@ return {
       
       -- setup mason-lsp
       require("mason-lspconfig").setup({
-        ensure_installed = { "clangd", "html", "cssls", "ts_ls", "emmet_ls" },
+        ensure_installed = { "clangd", "html", "cssls", "ts_ls", "emmet_ls", "ols" },
       })
 
       -- config servers
       local lspconfig = require("lspconfig")
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      local servers = { "clangd", "html", "cssls", "ts_ls", "emmet_ls" }
+      local servers = { "clangd", "html", "cssls", "ts_ls", "emmet_ls", "ols" }
       
       for _, lsp in ipairs(servers) do
         lspconfig[lsp].setup({
