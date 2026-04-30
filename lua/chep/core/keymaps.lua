@@ -38,6 +38,9 @@ vim.keymap.set("n","<F5>",function()
     print("programa em python foi compilado moral")
     cmd = "python3 " .. vim.fn.expand("%")
 
+  elseif ft == "odin" then
+  	print("programa em odin foi compilado moral")
+	cmd = "odin run *.odin -file"
   end
 
   if cmd ~= "" then
