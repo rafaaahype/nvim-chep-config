@@ -25,5 +25,6 @@ require("lazy").setup({
   require("chep.plugins.autotag"),
   require("chep.plugins.liveserver"),
   require("chep.plugins.autosave"),
-  require("chep.plugins.notify")
+  require("chep.plugins.notify"),
+  require("chep.plugins.arduino")
 })
