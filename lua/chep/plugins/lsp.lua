@@ -5,38 +5,68 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
   },
+
   config = function()
     require("mason").setup()
-    
+
     require("mason-lspconfig").setup({
-      ensure_installed = { "clangd", "html", "cssls", "ts_ls", "emmet_ls", "ols", "lua_ls", "arduino_language_server" },
+      ensure_installed = {
+        "clangd",
+        "html",
+        "cssls",
+        "ts_ls",
+        "emmet_ls",
+        "ols",
+        "lua_ls",
+        "arduino_language_server",
+      },
     })
 
-    local lspconfig = require("lspconfig")
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    local servers = { "clangd", "html", "cssls", "ts_ls", "emmet_ls", "ols", "lua_ls" }
-    
-    for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup({
+    local servers = {
+      "clangd",
+      "html",
+      "cssls",
+      "ts_ls",
+      "emmet_ls",
+      "ols",
+      "lua_ls",
+    }
+
+    -- Novo sistema do Neovim 0.11+
+    for _, server in ipairs(servers) do
+      vim.lsp.config(server, {
         capabilities = capabilities,
       })
+
+      vim.lsp.enable(server)
     end
 
-    lspconfig.arduino_language_server.setup({
+    -- Arduino
+    vim.lsp.config("arduino_language_server", {
       capabilities = capabilities,
+
       cmd = {
         "arduino-language-server",
-        "-cli", "arduino-cli",
-        "-clangd", "clangd",
-        "-cli-config", vim.fn.expand("~/.arduino15/arduino-cli.yaml"), 
-        "-fqbn", "arduino:avr:uno"
-      }
+        "-cli",
+        "arduino-cli",
+
+        "-clangd",
+        "clangd",
+
+        "-cli-config",
+        vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+
+        "-fqbn",
+        "arduino:avr:uno",
+      },
     })
 
-    -- Atalhos
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-  end
-}
+    vim.lsp.enable("arduino_language_server")
 
+    -- Atalhos
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+  end,
+}
