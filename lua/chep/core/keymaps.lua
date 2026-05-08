@@ -47,7 +47,10 @@ vim.keymap.set("n","<F5>",function()
 	cmd = "odin run *.odin -file"
   elseif ft == "lua" then
 	vim.notify("programa em lua foi compilado moral")
-	cmd = "lua *.lua" 
+	cmd = "lua *.lua"
+elseif ft == "javascript" then
+	vim.notify("programa em javascript foi interpretado moral")
+	cmd = "node *.js"
 end
 
   if cmd ~= "" then
