@@ -1,9 +1,11 @@
 return {
   "neovim/nvim-lspconfig",
+
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
+    "SmiteshP/nvim-navic",
   },
 
   config = function()
@@ -22,7 +24,16 @@ return {
       },
     })
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities =
+      require("cmp_nvim_lsp").default_capabilities()
+
+    local navic = require("nvim-navic")
+
+    local function on_attach(client, bufnr)
+      if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+      end
+    end
 
     local servers = {
       "clangd",
@@ -34,38 +45,31 @@ return {
       "lua_ls",
     }
 
-    -- Novo sistema do Neovim 0.11+
     for _, server in ipairs(servers) do
       vim.lsp.config(server, {
         capabilities = capabilities,
+        on_attach = on_attach,
       })
 
       vim.lsp.enable(server)
     end
 
-    -- Arduino
     vim.lsp.config("arduino_language_server", {
       capabilities = capabilities,
+      on_attach = on_attach,
 
       cmd = {
         "arduino-language-server",
-        "-cli",
-        "arduino-cli",
-
-        "-clangd",
-        "clangd",
-
+        "-cli", "arduino-cli",
+        "-clangd", "clangd",
         "-cli-config",
         vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
-
-        "-fqbn",
-        "arduino:avr:uno",
+        "-fqbn", "arduino:avr:uno",
       },
     })
 
     vim.lsp.enable("arduino_language_server")
 
-    -- Atalhos
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
   end,

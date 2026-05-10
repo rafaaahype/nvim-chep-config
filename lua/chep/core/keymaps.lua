@@ -1,3 +1,8 @@
+-- Navegação entre janelas no terminal
+vim.keymap.set("t", "<A-h>", [[<C-\><C-n><Cmd>wincmd h<CR>]], { silent = true })
+vim.keymap.set("t", "<A-l>", [[<C-\><C-n><Cmd>wincmd l<CR>]], { silent = true })
+vim.keymap.set("t", "<A-j>", [[<C-\><C-n><Cmd>wincmd j<CR>]], { silent = true })
+vim.keymap.set("t", "<A-k>", [[<C-\><C-n><Cmd>wincmd k<CR>]], { silent = true })
 -- F5 COMPILADOR / LIVE SERVER
 vim.keymap.set("n","<F5>",function()
   if vim.bo.filetype == "dashboard" then return end

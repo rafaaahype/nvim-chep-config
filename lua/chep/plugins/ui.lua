@@ -50,12 +50,41 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "catppuccin/nvim",
+      "SmiteshP/nvim-navic",
     },
 
     config = function()
+      local navic = require("nvim-navic")
+
       require("lualine").setup({
         options = {
           theme = "auto",
+        },
+
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch", "diff", "diagnostics" },
+
+          lualine_c = {
+            {
+              "filename",
+              path = 1,
+            },
+
+            {
+              function()
+                return navic.get_location()
+              end,
+
+              cond = function()
+                return navic.is_available()
+              end,
+            },
+          },
+
+          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
         },
       })
     end,
