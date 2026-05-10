@@ -7,11 +7,16 @@ return {
     },
 
     config = function()
-      require("nvim-navic").setup({
+      local navic = require("nvim-navic")
+
+      navic.setup({
         highlight = true,
         separator = " > ",
         depth_limit = 5,
       })
+
+      vim.o.winbar =
+        "%{%v:lua.require'nvim-navic'.get_location()%}"
     end,
   },
 }
