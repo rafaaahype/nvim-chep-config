@@ -31,7 +31,7 @@ return {
             local plugins = #vim.api.nvim_get_runtime_file("", true)
 
             return {
-              "rafinha gameplays ltda",
+              "❤ rafinha gameplays ltda ❤",
               "chepware",
               "versao six seven",
               "projeto: " .. cwd,
