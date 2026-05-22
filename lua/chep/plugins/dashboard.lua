@@ -20,10 +20,10 @@ return {
           },
           center = {
             { icon = "  ", desc = "Novo arquivo", action = "enew", key = "0" },
-            { icon = "  ", desc = "Arquivos recentes", action = "Telescope oldfiles", key = "1" },
+            { icon = "☭  ", desc = "Arquivos recentes", action = "Telescope oldfiles", key = "1" },
             { icon = "  ", desc = "Buscar arquivo", action = "Telescope find_files", key = "2" },
             { icon = "  ", desc = "Buscar texto", action = "Telescope live_grep", key = "3" },
-            { icon = "  ", desc = "Sair", action = "qa", key = "9" },
+            { icon = "(╯°□°)╯", desc = "Sair", action = "qa", key = "9" },
           },
           footer = function()
             local version = vim.version()
@@ -37,7 +37,7 @@ return {
               "projeto: " .. cwd,
               "pluguinhos: " .. plugins,
               "neovinho " .. version.major .. "." .. version.minor .. "." .. version.patch,
-              "⏰ " .. os.date("%H:%M:%S"),
+              "★ " .. os.date("%H:%M:%S"),
             }
           end
         }

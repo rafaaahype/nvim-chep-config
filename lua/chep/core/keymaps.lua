@@ -27,7 +27,7 @@ vim.keymap.set("n","<F5>",function()
 
     if ft == "c" then
       if uses_raylib then      
-    	vim.notify("programa em c com raylib foi compilado moral")
+    	vim.notify("programa em c foi compilado moral")
         cmd = "gcc *.c -o main -lraylib -lm -ldl -lpthread -lX11 && ./main"
       else
     	vim.notify("programa em c foi compilado moral")
@@ -45,7 +45,7 @@ vim.keymap.set("n","<F5>",function()
 
   elseif ft == "python" then 
     cmd = "python3 " .. vim.fn.expand("%")
-    vim.notify("programa em python foi compilado moral")
+    vim.notify("programa em python foi interpretado moral")
 
   elseif ft == "odin" then
     	vim.notify("programa em odin foi compilado moral")
