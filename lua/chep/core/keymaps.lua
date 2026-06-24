@@ -43,8 +43,12 @@ vim.keymap.set("n","<F5>",function()
       end
     end
 
-  elseif ft == "python" then 
-    cmd = "python3 " .. vim.fn.expand("%")
+    elseif ft == "python" then 
+    -- %:p:h pega o caminho absoluto do diretório do arquivo atual
+    	local file_dir = vim.fn.expand("%:p:h")
+    	local file_name = vim.fn.expand("%:t")
+    
+    cmd = "cd " .. file_dir .. " && python " .. file_name
     vim.notify("programa em python foi interpretado moral")
 
   elseif ft == "odin" then
