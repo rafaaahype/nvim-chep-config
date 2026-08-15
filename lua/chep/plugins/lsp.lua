@@ -6,6 +6,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "SmiteshP/nvim-navic",
+    "mfussenegger/nvim-jdtls", -- Adicionado para suporte ao Java
   },
 
   config = function()
@@ -24,9 +25,7 @@ return {
       },
     })
 
-    local capabilities =
-      require("cmp_nvim_lsp").default_capabilities()
-
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local navic = require("nvim-navic")
 
     local function on_attach(client, bufnr)
@@ -35,6 +34,7 @@ return {
       end
     end
 
+    -- Servidores genéricos
     local servers = {
       "clangd",
       "html",
@@ -50,24 +50,21 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
       })
-
       vim.lsp.enable(server)
     end
 
+    -- Arduino
     vim.lsp.config("arduino_language_server", {
       capabilities = capabilities,
       on_attach = on_attach,
-
       cmd = {
         "arduino-language-server",
         "-cli", "arduino-cli",
         "-clangd", "clangd",
-        "-cli-config",
-        vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+        "-cli-config", vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
         "-fqbn", "arduino:avr:uno",
       },
     })
-
     vim.lsp.enable("arduino_language_server")
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
