@@ -22,6 +22,7 @@ return {
         "ols",
         "lua_ls",
         "arduino_language_server",
+        "sqls",
       },
     })
 
