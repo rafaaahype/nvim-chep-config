@@ -31,5 +31,6 @@ require("lazy").setup({
   require("chep.plugins.statuscol"),
   require("chep.plugins.instant"),
   require("chep.plugins.navic"),
-  require("chep.plugins.jdtls"), 
+  require("chep.plugins.jdtls"),
+  require("chep.plugins.diffview")
 })
