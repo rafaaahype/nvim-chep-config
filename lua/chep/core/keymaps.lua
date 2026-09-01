@@ -2,6 +2,7 @@ vim.keymap.set("t", "<A-h>", [[<C-\><C-n><Cmd>wincmd h<CR>]], { silent = true })
 vim.keymap.set("t", "<A-l>", [[<C-\><C-n><Cmd>wincmd l<CR>]], { silent = true })
 vim.keymap.set("t", "<A-j>", [[<C-\><C-n><Cmd>wincmd j<CR>]], { silent = true })
 vim.keymap.set("t", "<A-k>", [[<C-\><C-n><Cmd>wincmd k<CR>]], { silent = true })
+vim.keymap.set('n', '<M-Insert>', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
 vim.keymap.set("n","<F5>",function()
   if vim.bo.filetype == "dashboard" then return end
   if vim.bo.buftype == "" then vim.cmd("write") end
