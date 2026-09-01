@@ -1,9 +1,7 @@
--- Navegação entre janelas no terminal
 vim.keymap.set("t", "<A-h>", [[<C-\><C-n><Cmd>wincmd h<CR>]], { silent = true })
 vim.keymap.set("t", "<A-l>", [[<C-\><C-n><Cmd>wincmd l<CR>]], { silent = true })
 vim.keymap.set("t", "<A-j>", [[<C-\><C-n><Cmd>wincmd j<CR>]], { silent = true })
 vim.keymap.set("t", "<A-k>", [[<C-\><C-n><Cmd>wincmd k<CR>]], { silent = true })
--- F5 COMPILADOR / LIVE SERVER
 vim.keymap.set("n","<F5>",function()
   if vim.bo.filetype == "dashboard" then return end
   if vim.bo.buftype == "" then vim.cmd("write") end
@@ -44,7 +42,6 @@ vim.keymap.set("n","<F5>",function()
     end
 
     elseif ft == "python" then 
-    -- %:p:h pega o caminho absoluto do diretório do arquivo atual
     	local file_dir = vim.fn.expand("%:p:h")
     	local file_name = vim.fn.expand("%:t")
     
