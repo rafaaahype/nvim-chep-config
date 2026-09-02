@@ -13,13 +13,12 @@
 
 
 ---
-
 ## Sumário
-* [Sobre a Configuração](#-sobre-a-configuração)
-* [Como Instalar](#-como-instalar)
-* [Como Utilizar](#-como-utilizar)
-* [Atualizações Futuras](#-atualizações-futuras)
-* [Desenvolvedor](#-Desenvolvedor)
+* [Sobre a Configuração](#sobre-a-configuração)
+* [Como Instalar](#como-instalar)
+* [Como Utilizar](#como-utilizar)
+* [Atualizações Futuras](#atualizações-futuras)
+* [Desenvolvedor](#desenvolvedor)
 
 ---
 
