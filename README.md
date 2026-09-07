@@ -32,6 +32,7 @@
 ## Sobre a Configuração
 Esta configuração visa fornecer suporte e ferramenta à algumas linguagens de programação e de marcação dentro do editor de código NeoVim. Por sua vez, ela evolui ao longo da minha necessidade enquanto estudante no curso superior tecnólogo de Análise e Desenvolvimento de Sistemas, todas as linguagens que esta configuração suporta vem diretamente das minhas necessidades enquanto desenvolvedor. Fique à vontade para modificar e distribuir gratuitamente. Caso tenha alguma sugestão, manda uma issue! :D
 
+Observações: A depender do emulador de terminal que você use, alguns dos atalhos desta configuração podem não funcionar, recomenda-se utilizar o WezTerm.
 ---
 
 ### Como Instalar
