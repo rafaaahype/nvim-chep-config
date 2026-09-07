@@ -33,7 +33,38 @@ return {
       if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
       end
+      
+      if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end
     end
+
+    -- Definição explícita de propriedades para os servidores mandarem os argumentos
+    local server_settings = {
+      ts_ls = {
+        typescript = {
+          inlayHints = {
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          },
+        },
+        javascript = {
+          inlayHints = {
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          },
+        },
+      },
+      lua_ls = {
+        Lua = {
+          hint = {
+            enable = true,
+            paramName = "All",
+            paramType = true,
+          },
+        },
+      },
+    }
 
     -- Servidores genéricos
     local servers = {
@@ -50,6 +81,7 @@ return {
       vim.lsp.config(server, {
         capabilities = capabilities,
         on_attach = on_attach,
+        settings = server_settings[server] or {},
       })
       vim.lsp.enable(server)
     end
@@ -70,5 +102,12 @@ return {
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+
+    vim.keymap.set("n", "<M-,>", function()
+      local current_buf = 0
+      local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = current_buf })
+      vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = current_buf })
+    end, { desc = "Toggle Inlay Hints (Alt+,)" })
   end,
 }
+
