@@ -77,7 +77,9 @@ vim.keymap.set("n", "<F5>", function()
     full_class_name
   )
 
-  vim.cmd("botright 15new")
-  vim.fn.termopen(cmd)
-  vim.cmd("startinsert")
+  local current_win = vim.api.nvim_get_current_win()
+
+  vim.cmd("botright 15split | terminal " .. cmd)
+
+  vim.api.nvim_set_current_win(current_win)
 end, { buffer = true, silent = true, desc = "Compilar e Executar Java com Packages" })

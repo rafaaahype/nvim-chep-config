@@ -1,9 +1,14 @@
+vim.keymap.set("n", "<C-q>", "<Cmd>bd!<CR>", { silent = true, desc = "Fechar aba/buffer atual" })
+vim.keymap.set("t", "<C-q>", [[<C-\><C-n><Cmd>bd!<CR>]], { silent = true, desc = "Fechar aba/buffer do terminal" })
+
 vim.keymap.set("t", "<A-h>", [[<C-\><C-n><Cmd>wincmd h<CR>]], { silent = true })
 vim.keymap.set("t", "<A-l>", [[<C-\><C-n><Cmd>wincmd l<CR>]], { silent = true })
 vim.keymap.set("t", "<A-j>", [[<C-\><C-n><Cmd>wincmd j<CR>]], { silent = true })
 vim.keymap.set("t", "<A-k>", [[<C-\><C-n><Cmd>wincmd k<CR>]], { silent = true })
+
 vim.keymap.set('n', '<M-Insert>', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
-vim.keymap.set("n","<F5>",function()
+
+vim.keymap.set("n", "<F5>", function()
   if vim.bo.filetype == "dashboard" then return end
   if vim.bo.buftype == "" then vim.cmd("write") end
 
@@ -25,40 +30,42 @@ vim.keymap.set("n","<F5>",function()
     local uses_raylib = vim.fn.system("grep -r \"raylib\" .") ~= ""
 
     if ft == "c" then
-      if uses_raylib then      
-    	vim.notify("programa em c foi compilado moral")
+      if uses_raylib then     
+        vim.notify("programa em c foi compilado moral")
         cmd = "gcc *.c -o main -lraylib -lm -ldl -lpthread -lX11 && ./main"
       else
-    	vim.notify("programa em c foi compilado moral")
+        vim.notify("programa em c foi compilado moral")
         cmd = "gcc *.c -o main && ./main"
       end
     elseif ft == "cpp" then
       if uses_raylib then
-    	vim.notify("programa em c++ com raylib foi compilado moral")
+        vim.notify("programa em c++ com raylib foi compilado moral")
         cmd = "g++ *.cpp -o main -lraylib -lm -ldl -lpthread -lX11 && ./main"
       else
-    	vim.notify("programa em c++ foi compilado moral")
+        vim.notify("programa em c++ foi compilado moral")
         cmd = "g++ *.cpp -o main && ./main"
       end
     end
 
-    elseif ft == "python" then 
-    	local file_dir = vim.fn.expand("%:p:h")
-    	local file_name = vim.fn.expand("%:t")
+  elseif ft == "python" then 
+    local file_dir = vim.fn.expand("%:p:h")
+    local file_name = vim.fn.expand("%:t")
     
     cmd = "cd " .. file_dir .. " && python " .. file_name
     vim.notify("programa em python foi interpretado moral")
 
   elseif ft == "odin" then
-    	vim.notify("programa em odin foi compilado moral")
-	cmd = "odin run *.odin -file"
+    vim.notify("programa em odin foi compilado moral")
+    cmd = "odin run *.odin -file"
+
   elseif ft == "lua" then
-	vim.notify("programa em lua foi compilado moral")
-	cmd = "lua *.lua"
-elseif ft == "javascript" then
-	vim.notify("programa em javascript foi interpretado moral")
-	cmd = "node *.js"
-end
+    vim.notify("programa em lua foi compilado moral")
+    cmd = "lua *.lua"
+
+  elseif ft == "javascript" then
+    vim.notify("programa em javascript foi interpretado moral")
+    cmd = "node *.js"
+  end
 
   if cmd ~= "" then
     vim.cmd("terminal " .. cmd)
