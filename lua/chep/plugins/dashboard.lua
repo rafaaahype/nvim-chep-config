@@ -32,7 +32,7 @@ return {
 
             return {
               "❤ rafinha gameplays ltda ❤",
-              "chepware",
+              "DJAMBA MENTALITY",
               "versao six seven",
               "projeto: " .. cwd,
               "pluguinhos: " .. plugins,
