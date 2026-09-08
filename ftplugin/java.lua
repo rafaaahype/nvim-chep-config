@@ -77,9 +77,20 @@ vim.keymap.set("n", "<F5>", function()
     full_class_name
   )
 
-  local current_win = vim.api.nvim_get_current_win()
+  local code_win = vim.api.nvim_get_current_win()
 
-  vim.cmd("botright 15split | terminal " .. cmd)
+  vim.cmd("botright 15new")
+  vim.fn.termopen(cmd)
+  vim.cmd("startinsert")
 
-  vim.api.nvim_set_current_win(current_win)
+  local term_buf = vim.api.nvim_get_current_buf()
+  vim.api.nvim_create_autocmd("BufWipeout", {
+    buffer = term_buf,
+    once = true,
+    callback = function()
+      if vim.api.nvim_win_is_valid(code_win) then
+        vim.api.nvim_set_current_win(code_win)
+      end
+    end,
+  })
 end, { buffer = true, silent = true, desc = "Compilar e Executar Java com Packages" })
