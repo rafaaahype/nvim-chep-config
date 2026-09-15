@@ -6,7 +6,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "SmiteshP/nvim-navic",
-    "mfussenegger/nvim-jdtls", -- Adicionado para suporte ao Java
+    "mfussenegger/nvim-jdtls", -- Suporte ao Java
   },
 
   config = function()
@@ -23,6 +23,7 @@ return {
         "lua_ls",
         "arduino_language_server",
         "sqls",
+        "jdtls", -- Adicionado aqui para o Mason garantir a instalação
       },
     })
 
@@ -38,6 +39,14 @@ return {
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end
     end
+
+    -- Forçar Inlay Hints em arquivos Java (corrige o comportamento do jdtls)
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "java",
+      callback = function(args)
+        vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+      end,
+    })
 
     -- Definição explícita de propriedades para os servidores mandarem os argumentos
     local server_settings = {
@@ -110,4 +119,3 @@ return {
     end, { desc = "Toggle Inlay Hints (Alt+,)" })
   end,
 }
-
