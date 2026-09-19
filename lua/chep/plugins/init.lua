@@ -19,7 +19,7 @@ require("lazy").setup({
   require("chep.plugins.treesitter"),
   require("chep.plugins.terminal"),
   require("chep.plugins.git"),
-  require("chep.plugins.presence"),
+  require("chep.plugins.neocord"),
   require("chep.plugins.indent"),
   require("chep.plugins.autopairs"),
   require("chep.plugins.autotag"),
