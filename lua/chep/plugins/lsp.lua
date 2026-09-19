@@ -23,7 +23,7 @@ return {
         "lua_ls",
         "arduino_language_server",
         "sqls",
-        "jdtls",
+--        "jdtls",
         "pyright",
       },
     })
