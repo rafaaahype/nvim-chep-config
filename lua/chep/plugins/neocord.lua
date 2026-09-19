@@ -15,7 +15,7 @@ return {
       file_assets         = {},
       show_time           = true,
 
-      editing_text        = "Editando %s",
+      editing_text        = "Codando %s",
       file_explorer_text  = "Navegando em %s",
       git_commit_text     = "Commitando alterações",
       plugin_manager_text = "Gerenciando plugins",
