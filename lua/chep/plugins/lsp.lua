@@ -23,7 +23,8 @@ return {
         "lua_ls",
         "arduino_language_server",
         "sqls",
-        "jdtls", -- Adicionado aqui para o Mason garantir a instalação
+        "jdtls",
+        "pyright",
       },
     })
 
@@ -40,7 +41,6 @@ return {
       end
     end
 
-    -- Forçar Inlay Hints em arquivos Java (corrige o comportamento do jdtls)
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "java",
       callback = function(args)
@@ -48,7 +48,6 @@ return {
       end,
     })
 
-    -- Definição explícita de propriedades para os servidores mandarem os argumentos
     local server_settings = {
       ts_ls = {
         typescript = {
@@ -84,6 +83,7 @@ return {
       "emmet_ls",
       "ols",
       "lua_ls",
+      "pyright",
     }
 
     for _, server in ipairs(servers) do
