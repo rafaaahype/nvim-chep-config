@@ -1,7 +1,6 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-
     config = function()
       require("gitsigns").setup()
 
@@ -16,16 +15,11 @@ return {
   },
 
   {
-    "sindrets/diffview.nvim",
-  },
-
-  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
+      "sindrets/diffview.nvim", -- Declarado diretamente aqui como dependência
     },
-
     config = function()
       local neogit = require("neogit")
 
@@ -46,3 +40,4 @@ return {
     end,
   },
 }
+

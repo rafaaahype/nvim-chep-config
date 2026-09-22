@@ -33,5 +33,6 @@ require("lazy").setup({
   require("chep.plugins.navic"),
   require("chep.plugins.jdtls"),
   require("chep.plugins.diffview"),
-  require("chep.plugins.codelens")
+  require("chep.plugins.codelens"),
+  require("chep.plugins.dap"),
 })

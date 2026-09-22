@@ -1,5 +1,5 @@
 return {
-  "IogaMaster/neocord",
+  "IogaMaster/neogit",
   event = "VeryLazy",
   config = function()
     require("neocord").setup({
